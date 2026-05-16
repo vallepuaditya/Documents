@@ -1,0 +1,503 @@
+	"all_database_tables_and_fields
+should_use_lowercase_snake_case"	barrier column				barrier column				barrier column					barrier column				barrier column				barrier column				barrier column																															
+																																																										
+																																																										
+			USERS	users.			USER GROUPS	users_groups.			USER TIERS	user_tiers.				USER TYPES	user_types.																																									
+	SetupComplete = 0 (defaults to false)																																																									
+																																																										
+	PRE-LOADED DATABASE ENTRIES		FUNCTION	DETAILS	FIELD NAME		FUNCTION	DETAILS	FIELD NAME		FUNCTION	DETAILS		FIELD NAME		FUNCTION	DETAILS	FIELD NAME																																								
+	Certain fields will be pre-populated in the default/created database		Logon ID (unique ID)				Name / Label				See Core Setup for Basic Use					See Core Setup for Basic Use																																										
+			Password	Encrypted			Environment									At the User Type level, display calculated Locations where it is permitted																																										
+	Pre-Defined Zones:		Active	False/True (0/1) Used to indicate whether an account has been inactive for the specified interval 			Zone																																																			
+	§  Everywhere (includes everything - always - and cannot be edited)		Active/Inactive Date	Read Only - Updates anytime active/inactive is *modified* (importing without a change = no date change)			Max Reservations per day	Global + Cascading per Location (integer)																																																		
+			Expired	False/True (0/1) Used to indicate whether a special account has expired 			Max Use Time per day	Global + Cascading per Location (integer)																																																		
+	Pre-Defined Resource Types:		Expired/Enabled Date	Read Only - Updates anytime expire/enabled is *modified* (importing without a change = no date change)			Session Extension Level 1	Global + Cascading per Location (integer)																																																		
+	§  Standard PC		Banned/Reinstated/Authorized	Default is Authorized for a new account, once banned the only option selectable is reinstated.			Session Extension Level 2	Global + Cascading per Location (integer)																																																		
+	§  Standard Mac		Banned/Reinstated Date	Read Only - Updates anytime active/inactive is *modified* (importing without a change = no date change)			Session Extension Level 3	Global + Cascading per Location (integer)																																																		
+	§  Laptop		CUID / GUID	Read Only																																																						
+	§  Study Room		Created date	Read Only																																																						
+	§  Conference Room		Created Location																																																							
+	§  Maker Space Station		First Authentication	Changes from NULL to current date/time on first successful authentication																																																						
+	§  A/V Equipment		Last Authentication	Updates on any successful authentication																																																						
+			Last Authentication Location	Location code?																																																						
+	Pre-Defined User Tiers:		ID history	Read Only - Trigger field - Keep list of x most recent ID numbers with date of change (if enabled -  see System > Update ID History)																																																						
+	§  System Administrator		User Types	Calculated ????																																																						
+	§  Organization Admin		User Automations	Calculated ????																																																						
+	§  Desktop Services		User Group	Drop down			Max Missed Waitlist Res	Cascading per Location																																																		
+	§  Special Events & Operating Hours		User Tier	Drop down			Max Missed Scheduled Res	Cascading per Location																																																		
+	§  Location Manager		User Zone	Admins only?			Missed Scheduled Res Window  	All / Integer of Weeks																																																		
+	§  Staff Operator		Special Account																																																							
+	§  Basic User		Total Sessions																																																							
+			Name: First Name(s)																																																							
+	Pre-Defined User Generation Profile Templates:		Name: Middle Name/Initial	Can be hidden/disabled …																																																						
+	§  Portal Self-Service		Name: Last Name(s)																																																							
+	§  Kiosk Guests		Email Addresses	Support multiple comma separated email addresses - marking the first as 2FA moves that email to the first entry																																																						
+	§  Kiosk Guests		Birthdate	Can be hidden/disabled … If enabled, allows storing user birthdate for age based permissions (when enabled, updated by 																																																						
+	§  Kiosk Guests		Physical Address	Can be hidden/disabled …																																																						
+	§  Kiosk Guests		Phone	Can be hidden/disabled … Allows entry of phone number based on defined number format(s)																																																						
+	§  Portal Self-Service		Comments	Allows mult-line comments to be entered																																																						
+																																																										
+	Pre-Defined Global Default Experience:																																																									
+	§  Global Default (cannot be deleted)		Custom Field 1 (relabeled inside GUI)	Custom field should be displayed by its customizable label (i.e., Custom Field 1 = Employee ID Number)																																																						
+			Custom Field 2 (relabeled inside GUI)	Custom field should be displayed by its customizable label (i.e., Custom Field 2 = Home Location)																																																						
+			Custom Field 3 (relabeled inside GUI)	Custom field should be displayed by its customizable label (i.e., Custom Field 3 = Etc...)																																																						
+			Custom Field 5 (relabeled inside GUI)	Custom field should be displayed by its customizable label (i.e., Custom Field 4 = Etc…)																																																						
+	Error messages/warnings		Custom Field 5 (relabeled inside GUI)	Custom field should be displayed by its customizable label (i.e., Custom Field 5 = Etc...)																																																						
+	Define Ranges/Blocks for Errors		External Record Number	Unique ID number to identify/match user in external system																																																						
+	Odds vs. Evens (server to client vs client to server)		External Record Dump	If enabled, cache last dump of patron profile for parsing against in offline scenario																																																						
+			External Profile	User's external profile affiliation stored from most recent usage, calculated from external record dump if null, drop down list populated from defined patron profiles (if defined) with N/A auto added to the list																																																						
+			Additional ID Fields: 	Many fields of these fields could/should be able to be hidden/disabled … Requires deliberation regarding how the values are stored in the DB																																																						
+			ID+: Alias	Must be unique																																																						
+	Unable to generate all users requested																																																									
+			ID+: Alias Format	Manual (manually entered alias), Misatched (alias does not match the currently configured format), {Alias Format} (display label of type matched), - if drop down changed to Alias Fromart 																																																						
+			ID+: Barcode number	Check for collisions - offer option of reviewing other account, removing from other account, merging with other account																																																						
+			ID+: Magstripe number																																																							
+			ID+: QR code ID																																																							
+	Prompts/Verbiage		ID+: Prox card (plastic)																																																							
+	Wording for unauthenticated reservations (go see staff, or proceed to resource)		ID+: Mobile credential																																																							
+			ID+: Watch credential																																																							
+			ID+: Identifier1																																																							
+			ID+: Identifier2																																																							
+			ID+: Identifier3																																																							
+			ID+: Identifier4																																																							
+			ID+: Government ID #																																																							
+			ID+: Gov ID Type																																																							
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+	User Generation Profile Template Variables That Require Direct Db Edit																																																									
+	Max quantity (default to 500, reset down to 500 if higher value entered)																																																									
+	MinLogonCombinationsAllowed = 100; (Warn if User Type generation format is likely to fail at creating all accounts due to constraints on unique characters & advise if fewer than requested were generated)																																																									
+	MinPasswordCombinationsAllowed = 100; (Warn if total possible unique passwords is fewer than X)																																																									
+																																																										
+																																																										
+																																																										
+																																																										
+			RESOURCES	resources.			RESOURCE TYPES	resource_types.																																																		
+																																																										
+																																																										
+			FUNCTION	DETAILS	FIELD NAME		FUNCTION	DETAILS	FIELD NAME																																																	
+			Hostname																																																							
+																																																										
+			Location				Permitted Reservation Methods	Same for Compound Resource Types																																																		
+			Area				Permissions Matrix	User Tier / User Type / User Group / Reservation Type																																																		
+			Sub-group																																																							
+	Staff Session?						Experience																																																			
+	Needs Attention																																																									
+			Asset tag #																																																							
+			Service Tag / Serial #																																																							
+			Software Version / Schema																																																							
+																																																										
+																																																										
+			Cooldown Remaining	Auto re-enable when timer gets to zero?																																																						
+																																																										
+			Auto start vs. staff started for non-authenticated entities (Compound Resource will ovveride sub components)																																																							
+																																																										
+																																																										
+																																																										
+			Directly Reserve	When making a Resource directly reservable, if Compound Reserve Only is enabled warn before enabling and disable CRO when DR is enabled																																																						
+			Compound Reserve Only	If only reservable as part of a Compound Resource, warn before disable Direct Reservation when this is enabled)																																																						
+																																																										
+			Linked/Connected to compound resource type?																																																							
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+			AREAS				KIOSKS				LOCATIONS	locations.				FREE TIME	free_time.																																									
+																																																										
+																																																										
+			FUNCTION	DETAILS	FIELD NAME		FUNCTION	DETAILS	FIELD NAME		FUNCTION	DETAILS	FIELD NAME			FUNCTION	DETAILS	FIELD NAME																																								
+			Workstation Options				COMMON																																																			
+			Lockout Interval	Block logons for X seconds - allows time to trigger reboot while not allowing anyone to log back in)			Kiosk Name/Label	Free form text string (nvarchar)			Location Details					Name/Label																																										
+			Session Cooldown	Available Immediately / Disable Indefinitely / Make available after X *seconds* (for ended sessions, allow for cleaning, prevent shoulder-surfers, login porior to reboot, etc)			Kiosk Code	3-4 Character nvarchar Prefix/code used in placeholders and abbreviated references (e.g. KSK)			Name					Areas assigned	One or more Areas - Area can only be associated to a single Free Time entity																																									
+			Logoff Auto-Reboot	Enable/disable automatic reboot when session ends or system is logged off			Kiosk Description	Free form text string (nvarchar)			Location Code	3-4 Character nvarchar Prefix/code used in placeholders and abbreviated references (e.g. ARD)				Max Daily Time	Set a max time limit per day per account																																									
+			Scheduled Shutdown	Enable self-shutdown (option for X minutes after specified schedule or specific time)			Asset tag #	Free form text string (nvarchar)			Schedule: Building Accessibility	This is the "public" schedule for the Location																																														
+			Schedule	Specify availability of resources in this area			Service Tag / Serial #	Free form text string (nvarchar)			Time Zone																																															
+			Shutdown Schedule	Specify Schedule on which shutdowns should be calculated (e.g., building hours, or a maintenance schedule)																																																						
+			Shutdown	Disabled (Leave On) / X minutes after Shutdown Schedule (5, 10, 15, 20, 30, 45, 60, 90 ,120) / Specific time of day			CORE				Public: Location Address																																															
+							Location	Select from dropdown			Public: Location Phone																																															
+			Permissions Matrix	User Tier / User Type / User Group			Assigned Area/Pool	Select from dropdown			Public: WWW																																															
+							Pooling Mode	Inherit from Pool / Disable Spillover / Waitlist Triggered (Spillover) / User Selects Area			Contact Info																																															
+			Offline Mode	Allow Logons / Disallow Standard Logons			Schedule	Select from dropdown			Vendor Info																																															
+			Offline Profile	Use last know good Experience  / Use Offline Mapping in Experiences			Permissions Matrix	User Tier / User Type / User Group			Nearby sites/branches																																															
+			Offline Enforcement	None / Must match a cached User Type			Comms Segment	Select single Segment from dropdown (Segments available determined by Location assigned)																																																		
+							Comms Behavior	Home server & Behavior comes with Segment assignment (read only?)			Available User Types																																															
+			Reboot on Logoff				Home Server				Available Workflows																																															
+			Staff Logon				Workflow	Selectable from list of Workflows enabled at the Location level			Available Segments	"
+
+"																																														
+							Terminal ID	Potentially supplied to external systems			Preferred Server	Servers are ordered with default/preferred server auto-moved to top of the list																																														
+			Allow Instant Accounts / Reservations	Enable additional button			Terminal Type	Workstation vs. Portal			Failover Behavior	Local (default) Only, Any Server (Prefer Local/default), Any Server																																														
+			Instant Res/Accounts Only	Change logon behavior?			Portal Association	Read Only (entry associated with Access Portal)			Failback Interval	Frequency in seconds between check-ins/attempts to return to preferred server (ignored if Any Server is selected)																																														
+							Software Version	Read only (updated by system at check-in)			Perhaps a separate table with these entries: Location ID + Segment ID + Preferred Server ID + Behavior Config?																																															
+			Reservation Types	(Resource Type can supersede this option)																																																						
+							CONFIGURATION				Private: Location Manager Contact	Require name, phone number, and email address																																														
+							Theme	TBD			Private: Technical Contact	Require same data - Option to inherit from the Organization level																																														
+			Reservation Duration - Full Session	Integer (must be greater than Quick Session value)			Theme Options	TBD			Private: Vendor Contact	Require same data - Option to inherit from the Organization level																																														
+			Reservation Duration - Quick Session	Integer (must be less than Full Session value)			Default Interface Size	Small / Medium / Large / Extra Large																																																		
+			Reservation Duration - Calculation	Respect Resource Type, Least Restrictive, Most Restrictive, Force Override			Kiosk Features Enabled	Reservations / User Account "management"			Server Marked Offline																																															
+							Kiosk Feature Default	User choice, or specify one)			Max Sessions per Location		Default to As per User Group (if enabled, the more restrictive policy is followed)																																													
+			Time Allocation Mode	Personal Time Only / Free Time Only / Free Time + Personal Time (allows personal account time to be used, otherwsie only minutes from Free time can be used)			Session Reservation Types	Instant / Waitlist / Scheduled																																																		
+			Free Time	Free Time bucket assigned to this Area (greys out if Time mode is set to Personal Time Only)			Session Duration Types	Checkboxes: Full / Quick			Timeouts: Idle Session		Default to inherit from globals																																													
+			Free Time Permissions	Optionally specify if only certain User Tier / User Type / User Group are allowed to spend personal time (greys out if Time mode is set to Personal Time Only)			Schedule Res Blockout Override	Inherit from Location			Timeouts: Locked Session		Default to inherit from globals																																													
+											Timeouts: Login Attempt		Default to inherit from globals																																													
+			Session Extension Matrix	Enabled/Disabled			SESSION				Timeouts: Hold After Reboot		Default to inherit from globals																																													
+			Minimal Utilization (Purple)	All Extension Options / Threshold 1 / Threshold 2 / Threshold 3 / Sand timer / Pause only			QR Code Login	Enable / Disable			Timeouts: Reauthenticate		Default to inherit from globals																																													
+			Reduced Utilization (Blue)	All Extension Options / Threshold 1 / Threshold 2 / Threshold 3 / Sand timer / Pause only			Skip "Have Account" choice?	Skip prompt screen asking user to categorize as having account or needing one																																																		
+			Typical Utilization (Green)	All Extension Options / Threshold 1 / Threshold 2 / Threshold 3 / Sand timer / Pause only			Force Self-Categorization	Enable Kiosk screen that requires Users to choose between "I have an account" and "I do not have an account" (text should be customizable)			Session Time: Extension Trigger Point		Default to inherit from globals																																													
+			Elevated Utilization (Orange)	All Extension Options / Threshold 1 / Threshold 2 / Threshold 3 / Sand timer / Pause only			Inactivity Timer	Integer			Session Time: Courtesy Notice		Default to inherit from globals																																													
+			Heavy Utilization (Red)	All Extension Options / Threshold 1 / Threshold 2 / Threshold 3 / Sand timer / Pause only			Show Timer	Enable / Disable			Session Time: Low Warning		Default to inherit from globals																																													
+											Session Time: Critical Alert		Default to inherit from globals																																													
+			Session Extension Level 1	As per User Group / Override (integer)			ACCOUNT CREATION				Session Time: Unauthenticated User		Default to inherit from globals																																													
+			Session Extension Level 2	As per User Group / Override (integer)			On-Demand User Generation	Disabled / Kiosk button / screen that allows self-service generation of User Account																																																		
+			Session Extension Level 3	As per User Group / Override (integer)			User Generation Profile	Maps which User Generation Profile Template is used when creating accounts for end users			Times: Missed Block Reservation		Default to inherit from globals																																													
+			Terms of Service				Account Display Interval	Duration of time to display User Account information for newly created accounts (if enabled at Location level)			Times: Missed Queued Reservation		Default to inherit from globals																																													
+			ToS Declined Behavior	Cancel Session / Block Internet Experience / Filter Internet Expirience (Use a ToS Declined Experience)			Output Type Override	Screen / Printer / Etc			Times: Missed Scheduled Reservation		Default to inherit from globals																																													
+											Times: Scheduled Reservation Overdue Flag	Disabled / Minutes Integer (should be less than Missed Schedule Reservation to have any effect)	Default to inherit from globals																																													
+			TEXT STRING OVERRIDES (prompts, errors, etc.)								Missed Session Time Allocation	When logging missed session transactions, allocate time accordingly: Count missed session time against the user, log it as zero minutes, log it as free time/wait time?																																														
+			TBD … Mostly mirrors global errors/warning/prompts				SECURITY FEATURES																																																			
+							App Menu Access	Taps / Keyboard shortcut / etc.																																																		
+							Log Off Password				Schedule Res Days Advance	Disallow Scheduled reservations more than X days in advance																																														
+							Offline Admin Username				Schedule Res Blockout	Prevent all Scheduled Reservation less than X minutes in the future																																														
+							Offline Admin Password				Schedule Res Max Concurrent	Prevent additional Scheduled Reservations if X are already scheduled																																														
+							Admin Levels	Specify User Tiers considered Admins (for viewing config at kiosk)																																																		
+																																																										
+							TEXT STRING OVERRIDES (prompts, errors, etc.)																																																			
+							TBD … Mostly mirrors global errors/warning/prompts																																																			
+											TEXT STRING OVERRIDES (prompts, errors, etc.)																																															
+											TBD … Mostly mirrors global errors/warning/prompts																																															
+																																																										
+											USER GENERATION CONFIG / OVERRIDES	VALUES																																														
+											Location Code	e.g., ARD																																														
+											Profile Templates	Check box: Whitelist of Profile Templates availabel for selection at this Location - including default.  New locations allow all and default is first in list of User Generation Profile Templates																																														
+											Profile Template Default																																															
+											Output Type Default 	e.g., user select, matrix, receipt, on-screen																																														
+											Core Defaults/Option Overrides	Matrix Print	Receipt Print	On-Screen																																												
+											Quantity Overrides	Inherit	Inherit	Inherit																																												
+											User Group Override	Inherit	Inherit	Inherit																																												
+											User Type Override	Inherit	Inherit	Inherit																																												
+											Print Options	Matrix Print	Receipt Print	On-Screen																																												
+											Logo	Inherit	Inherit	Inherit																																												
+											Title	Inherit	Inherit	Inherit																																												
+											Receipt Header 1	Inherit	Inherit	Inherit																																												
+											Receipt Header 2	Inherit	Inherit	Inherit																																												
+											Receipt Footer 1	Inherit	Inherit	Inherit																																												
+											Receipt Footer 2	Inherit	Inherit	Inherit																																												
+											Read only - display validity details from User Automations	Inherit	Inherit	Inherit																																												
+											Validity Message	Inherit	Inherit	Inherit																																												
+											Output Options	Matrix Print	Receipt Print	On-Screen																																												
+											Include Username	Inherit	Inherit	Inherit																																												
+											Include Password	Inherit	Inherit	Inherit																																												
+											Include User Group	Inherit	Inherit	Inherit																																												
+											Include Scannable ID	Inherit	Inherit	Inherit																																												
+											Desired Scannable ID Format/Symbology	Inherit	Inherit	Inherit																																												
+											SSO QR Code?	Inherit	Inherit	Inherit																																												
+											Desired Size (e.g., small,medium, large, extra large)	Inherit	Inherit	Inherit																																												
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+			TRANSACTIONS	resource_types.			MESSAGING	messaging.																																																		
+																																																										
+											EXPERIENCE	experiences.																																														
+			FUNCTION	DETAILS	FIELD NAME		FUNCTION	DETAILS	FIELD NAME																																																	
+							Broadcast Message Options:																																																			
+							Broadcast: Audience	Area(s), Pool(?), Location			FUNCTION	DETAILS	FIELD NAME																																													
+			Transaction Type				Broadcast: Delivery Start	Default to ASAP, allow setting specific time with TZ (do not deliver before)			Name/Label																																															
+							Broadcast: Delivery End	Default to Today only (EOB) - Offer a date picker, do not attempt delivery after selected date																																																		
+			Reservation Type	Block/Maintenance/Scheduled/Waitlist/Walk-Up			Broadcast: Message	List of canned responses (assignable to zone), or free form (message content included in audit)			Credential Type	Shared (send common/stored credential to OS) or Pass Thru (pass end user credentials to underlying OS)																																														
+			Duration Type	Full/Quick			Broadcast: Purge	Read only - Message and delivery status purges after X days (default to 1 year)																																																		
+			Reservation Flags	Kiosk/Portal/Endpoint			Zone permissions for are evaluated when editing/deleting a message by comparing the Location/Area/etc.of the message against the Zone assigned to the User Account of the logged in user (dictating their abilities to manage a message with pending actions)																																																			
+				End User/Staff							Language Enabled	E.g., English, Spanish, Etc.																																														
+				Missed/Cancelled/Extended/Adjusted/Assisted/Group/Abbreviated*/Incomplete/Moved/Overdue/Elevated/Prioritized/PushAuth/Rebooted/Technician/TosDeclined/2FA							ToS Behaviors Enabled	Block all Internet / Filter Internet																																														
+				(AKA Less than guaranteed time - standby, EOB sessions, sessions capped by scheduled/blocked res, etc.)																																																						
+			Wait Time	Time between creation of reservation and assignment to a PC or cancellation			Standard Message Options:				Offline Mappings	Read Only / Calculated: User Types / Location User Types / Etc.																																														
+			Origin of Reservation	Specific Authenticated Resource, Kiosk, or Portal			Standard: Audience	User, Authenticated Resource																																																		
+							Standard: Delivery Start	ASAP (only option)																																																		
+							Standard: Delivery End	Default to Today only (EOB) - Offer a date picker, do not attempt delivery after selected date			Username / Domain / Password Matrix	(Standard + ToS options (2)) x Languages																																														
+							Standard: Message	List of canned responses (assignable to zone), or free form (audited)																																																		
+			Personal Time Used				Standard: Purge	Option to constrain to Location? (Default to constrain?  User Tier permission setting?)																																																		
+			Free Time Used																																																							
+																																																										
+			Late Time Used	Used to account for charging missed sessions before timeout and/or late sign-ins for Scheduled session			Pending Messages:																																																			
+							Zone permissions are evaluated to compare the location/area/etc.of the message against the Zone assigned to the User Tier of the logged in user (dictating their abilities to manage a message)				Permissions Matrix???	User Tier / User Type / User Group (prevent unintentional assignment to incorrect area?)																																														
+							Hold onto messages that expire for 7 days - option to delete?																																																			
+			Session Type/Class/Etc.																																																							
+			Location of Transaction??																																																							
+							(auto-select user/auth resource when enaging from specific user or resource in admin)																																																			
+			Res creation time																																																							
+			Res assignment time																																																							
+			Res scheduled time																																																							
+			Res logon time																																																							
+			Res canceled/missed time																																																							
+			Res Cancelling account	User / Staff / System Automation																																																						
+			Res 																																																							
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										
+																																																										

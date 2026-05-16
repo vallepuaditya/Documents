@@ -1,0 +1,121 @@
+					barrier column			barrier column			barrier column			barrier column			barrier column														
+																															
+			SETUP																												
+																															
+																															
+			USERS																												
+			User Accounts*	List of actual db accounts		User Accounts*			Account Generation			User Groups			User Tiers			Automations					Accounts	Groups	Tiers	Automations	Account Generation				
+			User Generation	Profile Templates pre-define sets of user parameters for automated account generation when creating passes		Search: Quick	"Automatic %wildcard% search for user activity that calendar day (at specific branch?)? (e.g., missed sessions, failed authentications not followed by successful auth, etc.)
+Fields = first name, last name, ID number (auto searches all ID fields)
+Also display recent activity at given branch for easy access/pull up"					Add			View Matching Accounts	Display list of accounts with account tier matching the currently selected tier or tiers (i.e., switch to user accounts and auto set filter)		RegEx					Search	Add		Add					
+			User Groups	List of db user groups		     Search: Advanced	Advanced search should allow admins and staff to build a semi-complex query 					Remove			View Tier Permissions	Show list of enabled permissions for selected tier (exclude all disallowed permissions)		Guest Accounts					Add	Remove		Modify					
+			User Tiers	List of user levels/roles/permissions		Create	Create a new database user account with minimum required information (logon ID, user group, user type, user tier, password if security requirements allow 					View Members			Add Tier	Name, configure, and create a new account tier		Instant Accounts					Merge	View Members		Remove					
+			User Types	Regex matching of what Users start typing in to Log On		Merge	Merge two (or more?) user accounts while maintaining a singular history (i.e. update records/history to reflect belonging to a single account)								Edit Tiers	Modify assignment of permissions for account tiers		Visitor Accounts					More…*			View Members					
+			User Automations	Defines which automated actions - if any - should execute during nightly interval		More…									Remove Tiers	Delete an account tier (only if no accounts belong to this tier)							*Advanced Search								
+						     Ban/Disable	The ban flag will auto-block any authentication attempt by a given user as well as preventing staff from creating reservations for a user. This allows staff to block a user from the system regardless of whether an external system considers their credentials to be valid, and is above and beyond the concept of an standard expired or inactive account. 																*Ban / Disable								
+						     Remove	User should be presented with a strongly worded warning & required to enter their admin password to confirm, before a final confirmation/warning of the number of records/transactions that will be impacted prior to action executing.																*Remove								
+						Create Reservation…																	Create Reservation*								
+						     Standby																	*Standby Reservation								
+						     Group																	*Group Reservation								
+						     Scheduled																	*Scheduled Reservation								
+						User Activity…																	View User Activity*								
+						     Current Activity																	*Current Activity								
+						     Last 30 Days						NOTES:											*Last 30 Days								
+						     Full History						Highlight/mark user groups that are set as the default group for any kind of User Generation Profile Template											*Full History								
+						Message?						Disallow removal of group that is set as a default											Message?								
+						Create Passes						Display caclulated field of Templates / Locations that have the selected User Group set as a default creation group											Create Passes								
+																															
+			LOCATIONS																												
+			Home* (Display Org/Loc Details)	For staff portal, display details of current Location, for admin show Org details		Home*			Locations			Areas			Pools			Free Time		Kiosks		Schedules		Messaging		Pre-Flight					
+			Locations	Locations allow distinction of physical buildings and sites to facilitate granularity in reporting and location specific configurations such as schedules, expected user classes, as well as server assignments and accessibility.					Details			Details			Details					Details		Details				Details					
+			Areas	Areas are defined physical locations within a given Location, typically divided by floor, space, function, or other logically preferred entity.  All Resources and Compound Resources are assigned to a single specific Area. (if they exist - subgroup as column or option to group by to allow collapsible sections)					Create			Create			Create					Create		Create				Create					
+			Pools	List of Pools with underlying Area assocations					Configure			Configure			Configure					Configure		Configure				Configure					
+			Free Time	List of Free Time bucket/puddle/allocation					Remove			Remove			Remove					Remove		Remove				Remove					
+			Kiosks	List of kiosk terminals - kiosks must have a Location association					Decommission			Decommission								Decommission		Decommission				Execute					
+			Schedules	List of time Schedules / access times					Recommission			Recommission								Recommission		Recommission				Schedule?					
+			Messaging	Sub-section with list of canned messages w/zone, broadcast options (+defaults?), standard message options (+defaults?), and pending messages					Message?			Message?																			
+			Pre-Flight	List of Pre-Flight checklists for automated execution / Location opening					Make Offline/Online																						
+																															
+																															
+																															
+																															
+																															
+																															
+																															
+																															
+																															
+			RESERVATIONS																												
+			Alerts (0)	Needs Attention: Missed, Late, Assisted impending?, Offline (perma header re: license expiration inbound? - snooze option?)		Creat Session/Start?																									
+			Waitlist (3)	List of individuals being told to go to their sessions and/or estimated wait times		Create a reservation off of the details in a missed reservation																									
+			Upcoming (12)	Show today only by default, option for today+tomorrow, +3 days, +7 days?																											
+			Home*	Show all reservations for the selected pool/area of the current Location - filter to Today only by default, additional options +/- 1, 3, 7 days (previous X days and X days into the future)																											
+			Assisted (0)	List of reservations that show staff assistance is required																											
+			Calendar	Daily vs. monthly view (see MyPC screenshot)																											
+			More…	Dropdown showing additional actions: Create Reservation, Assisted Reservations, Block Reservations, Maintenance Reservations, Past Reservations, Scheduled Reservations																											
+																															
+																															
+																															
+																															
+			RESOURCES																												
+			Resources (355)	Resources are a list of endpoints that may be reserved either directly or as part of a compound resource using one or more methods of reservation depending on configuration. Resources can either be authenticated endpoints (e.g., computers) or unauthenticated (e.g., a room, desk, 3D printer, laser cutter, A/V equipment, etc.), and will be determined based on the type to which they belong.																											
+			Resource Types (6)																												
+			Resource Collections																												
+			Compound Resources (4)																												
+			Compound Types (1)																												
+																															
+																															
+																															
+																															
+																															
+																															
+																															
+			REPORTS																												
+			Reports																												
+			Report Schedules																												
+			Transactions																												
+			SETTINGS																												
+			Organization																												
+			Information	License expiry/scope/warning, how to get help, documentation portal, etc…																											
+			Theming / Branding	Colors and Logos to customize the UX																											
+			Templates (email)																												
+			Messaging																												
+			Global Defaults	low time, critical time, max scheduled res, max days out for scheduled…																											
+			Languages																												
+			Experiences																												
+			CONSTRUCTS				PORTALS																								
+			Zones-MVP2	Groups of Locations or Areas where elevated permissions are allowed to be in effect			Name					Location	Path																		
+			Segments-MVP	Communication and Authentication "network" Segments (server groupings aligned with network communication capabilities)			Server hosting said Portal (server URI)					Allow one or more?	(i.e., /patrons/																		
+			Workflows-MVP	Workflows shape authentication requests mapping of user types to specific integrations while shaping request workflows to  to segments???  See Functional Overview Tab			API processing engagement in said Portal (backend ARR type function)																								
+			Portals-MVP	https://{who_cares_which_server_name}/{loc_code?}/  … https://{who_cares_which_server_name}/portal2/   …  https://{who_cares_which_server_name}/ravenhill/			Associated Location to which said Portal is serving																								
+			SYSTEM																												
+			Licensing	View or update license details (keeps most recently used license / option to revert)																											
+			Data																												
+			Database Details	Database connection/details																											
+			Backup	Backup Config / Export data / etc.																											
+			Privacy Options	Telemetry / Disable undesired ID fields? / Site config /  preferred mode of PII compliance /  https://trust.pharos.com																											
+			Security Policies	Password requirements, encryption at rest , require admins to re-enter password for bulk/destructive actions, etc.																											
+			Connections																												
+			Email Config	Mail server config options																											
+			Identify Providers	External connections/gateways/authentication endpoints - Integration plugins for SIP and III need to be able to call a plugin for the SIP2 / III gateway																											
+			Logging																												
+			Event Logs	View/Filter/Search Events that trigger a log entry in the database above and beyond a realtime log																											
+			Audit Logs	View/Filter/Search Audit entries pertaining to access and/or modifications (easily audit specific resource, individual, portal, or section of the system)																											
+			Real-Time Logs	View/Filter/Search Real-Time entries as they are captured from a given endpoint (easily audit specific resource, individual, portal, or section of the system)																											
+			Log Config	Log storage options, max file size before rollover, etc.																											
+			Network																												
+			Diagram	Option to store customer network diagram?																											
+			Offline	List entities that are considered to currently be offline along with date of last checking - grid format with filters - have lnk to jump to Event Logs with filter set to offline/online events 																											
+			Network Info	Report of network settings on each server and ranges at each location - kiosks & clients																											
+			Ports & Components	List components and the assigned ports (modifiable), communication intervals, etc.																											
+			Scripts	View , edit, delete scripts																											
+			Servers	View list/status of servers																											
+			Deployment																												
+			Deployment Options	Defualt settings for new deployments (skips needs for parameters - specify Location, Area, Sub-Group, Resource Type, Compound Only, Allow Direct Selection)																											
+			Server Updates																												
+			Endpoint Updates																												
+																															
+																															
+																															
+																															
+																															
+				System > Data > Privacy Options > Update ID History																											

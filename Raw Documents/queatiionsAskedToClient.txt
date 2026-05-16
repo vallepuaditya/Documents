@@ -1,0 +1,118 @@
+				
+	Questions:		Sign-Off Requirements:	
+				
+	BACKEND:		HIGH LEVEL	
+	Please confirm details recorded in transactions beyond simply the user, resource, etc. (e.g., session reservation type, duration type, personal time used, free time used, wait time, etc…			Reconfirm pre-reqs have no software licensing costs
+	What abilities are available to call/test/simulate authentication plugins and view responses/errors without digging through logs (command line and/or web interface)?			Licensing mechanism (license generation process, license application/renewal steps, file in specific location to prevent lift and shift?, requires license file to install primary components?)
+	Please verify that every portal screen - including popups - will be addressable by unique URI (e.g., the quick search or add account popups could be triggered by entering the correct URI)			Solution requirements, e.g., server OS/release, server requirements, prerequisites, client requirements (i.e., memory), etc..
+	Please discuss scripting requirements, custom choices, reverse lookup logic, etc.			Commitment to handling memory leaks/ever-expanding resource usage
+	Please confirm specs/ability for customizations for ToS (i.e., support for RTF / images / languages)			List of expected elements that can be branded or themed
+	Please confirm themeing and branding option (html pages, customer picks shades rather than colors for prefdefined color schemes)?			Review piracy concerns
+	Please confirm configurable ports			Report options (Ability to save, schedule, etc., and a full list of reports (see MyPC list sent to Satya (MyPC+7+Reports+Guide%20(S_lg_mBG0Rg1725037180702-).pdf))
+	Please confirm ability to test without HTTPS (objective is to remove protocols, ciphers, certificates, etc., from the chain)			Telemetry engagement
+	What is the expectation for managing the SSL certs?			
+	What options do we have for automatic client updates?			
+				
+	We need to discuss Logging options (samples below)		DATABASE	
+	Mask account numbers in log?			Database install architecture/instructions
+	Display user logon ID in log			Database structure (tables, view, stored procedures, etc.)
+	Display user alias in log			Ability for customers to add custom fields - sequential with labels, custom names, or composite fields with separators - perhaps JSON style? (e.g., Custom1, Custom2, Custom3, vs. RFID, InternetUsePolicy, SpecialFlag)
+	Display logical ID in log			
+	Display user names in log			
+				
+			FUTURE PREPARATIONS	
+				Upgrades / disruptions
+				Backward / forward compatibility
+				Print integration - plan for balances?
+	CLIENT WORKSTATIONS			
+	After login or before?			Gracefully handling unsupported features whether server side or client side
+	Chrome sounds like it will be after login.  Can the solution run as a service/daemon log out and log back in as a different user as needed (profile change, language change, etc?)			Pay for time installations
+	Would this easily resolve 2FA requirements?			Auto updates?
+				
+	Workstation UI			
+	Maximize visibility (large/colors)			
+	Computer label/description/details/etc.		MOCKUPS	
+	Time (and time zone?)			GUI confirmations of similarity/capability to MyPC
+	Display guaranteed session time 			Define limitations of client GUIs before login
+	Remember special logons (see below			Details (mockups?) on client functionality/expectations
+				- Windows PC
+	Client Warning System			- Mac OS
+	Green = >50%			- Chrome OS
+	Blue = Below 50% but > Time Warning			
+	Marigold = Below Time Warning threshold but > Low Time			
+	Red = Below Low Time threshold but not yet logged off			
+				
+	How does the client identify the server to connect to?			
+	What happens if that server is offline? (i.e., failover options to other servers within the accessible segment)			
+	How can the client be disabled (locally or remotely)?			
+				
+	How long before an MIA session is transacted?			
+	Local machine must recall the user session in progross in event of power loss reboot (presumes thaw space exists)		DEPLOYMENT	
+				Details re: installers and installation process
+	Special key combos for staff, admin, bypass (Key combos TBD: Currently Shift+Enter, CTRL+Enter, CTRL+Shift+Enter)			
+				
+	Selection of language specific user/pass combo is mapped in the ENVIRONMENT? (applicable for reservations)			
+	Language default selection based on user and/or user group? (applicable for reservations)		SECURITY / CERTIFICATIONS / COMPATIBILITY	
+	Default language display on logon GUI is set based on the user's overiding specific preference, or the 			Whitepaper page like trust.pharos.com detailing encryption / data security for PII
+				Compliance gaurantee regarding PII with GDPR / HECVAT / SOC 2 / ISO 27001:2022 / ISO 27017
+				    - Options to enforce specific protocols which would encrypt certain data (even at rest), force https, and impact other settings)
+				ADA compliance / VPAT (also see below)
+	MacOS FILEVAULT			WCAG 2.1/2.2 AA and JAWS Reader
+				2FA compatibility/limitation and options
+				List of permissed items/actions/etc. (i.e., build list of which administrative pages/areas and actions can be controlled or limited)
+	https://travellingtechguy.blog/understanding-the-macos-authentication-flow-with-filevault-and-or-jamf-connect/			List of audited items (which actions will generate audited entries, what data will be logged with these entries, and which ones will be visible without direct db access)
+	https://www.joeyverlinden.com/entra-id-joined-kiosk-or-autologon-device-on-a-budget/			Secuirity measures against brute force hacking (slowing down auth requests, etc.)
+	https://www.reddit.com/r/Intune/comments/1ajh1lc/automatic_logon_broken_on_full_entra_joined/			
+				
+	https://twocanoes.com/knowledge-base/unlock-filevault-automatically/			
+	https://twocanoes.com/products/mac/password-utility/#pricing			
+	https://bitbucket.org/twocanoes/passwordutility-public/downloads/			
+	"What Apple actually allows in Tahoe
+
+    FileVault remains a pre‑boot disk unlock: until the volume is unlocked, no user‑space daemons, launchd jobs, or agents from the encrypted volume can run, because their binaries and configs are on the locked disk.
+
+    Auto login in System Settings only works if FileVault is off; if FileVault is on, the auto‑login UI is disabled and you must enter a password at boot."			
+	https://help.swif.ai/en/articles/10705969-troubleshooting-a-non-admin-login-failure-on-filevault-enabled-macos			
+	Perplexity - 3rd party logon plugin and tahoe filevault not working			
+				
+	There is no supported way for third‑party code to run from the encrypted system volume before that FileVault unlock step.			
+	"Yes, but only in a very limited sense, and not in the way most people mean when they talk about macOS “system daemons” or “agents.”
+
+### What actually runs before FileVault unlock
+
+When FileVault is enabled, the machine boots into a small pre‑boot environment that lives on an unencrypted volume and is separate from the main macOS system. This environment’s job is basically just to present the unlock UI and obtain a valid credential to decrypt the main APFS Data volume. [community.jamf](https://community.jamf.com/general-discussions-2/auto-login-with-filevault-enabled-29417)
+
+In that state:
+
+- The encrypted system volume is not mounted, so anything stored there (including most launchd plists, binaries, scripts, and user home data) is inaccessible. [help.swif](https://help.swif.ai/en/articles/10705969-troubleshooting-a-non-admin-login-failure-on-filevault-enabled-macos)
+- What runs is Apple’s own pre‑boot code and components, not the normal launchd hierarchy from the full OS. [community.jamf](https://community.jamf.com/general-discussions-2/auto-login-with-filevault-enabled-29417)
+
+So you cannot have an arbitrary launch daemon or launch agent (in `/System/Library/LaunchDaemons`, `/Library/LaunchDaemons`, `/Library/LaunchAgents`, or `~/Library/LaunchAgents`) start before FileVault unlock, because the volume those items live on is still encrypted and not yet available. [stackoverflow](https://stackoverflow.com/questions/38828858/os-x-launch-daemon-doesnt-start-until-user-logs-in)
+
+### When normal LaunchDaemons and LaunchAgents start
+
+Once a valid FileVault user unlocks the disk, macOS continues booting into the full OS, mounts the data volume, and only then does the normal `launchd` world come up:
+
+- System **LaunchDaemons** (in `/System/Library/LaunchDaemons` and `/Library/LaunchDaemons`) start after the data volume is unlocked but do not depend on a user GUI login session. [news.ycombinator](https://news.ycombinator.com/item?id=45296353)
+- **LaunchAgents** (per-user or in `/Library/LaunchAgents`) require a user login session and thus start later, after login. [discussions.apple](https://discussions.apple.com/thread/254467386)
+
+From the point of view of a FileVault‑enabled machine that just powered on unexpectedly, any custom daemon you define will not run until someone enters a password at the FileVault screen and the OS proper boots. [community.jamf](https://community.jamf.com/general-discussions-2/auto-login-with-filevault-enabled-29417)
+
+### Practical implication
+
+If your requirement is:
+
+- “Run this code even after a power loss **without** any human entering a password”  
+then you cannot have full‑disk FileVault enabled, because that scenario inherently blocks unattended boot until a user unlocks the volume. [reddit](https://www.reddit.com/r/macsysadmin/comments/1achkcz/allow_systemlevel_launchd_processes_while/)
+
+If your requirement is:
+
+- “I’m okay manually entering the FileVault password after reboots, but I want services to be running even when no one is logged in”  
+
+then you should:
+
+- Enable FileVault.  
+- Install your services as **LaunchDaemons** in `/Library/LaunchDaemons`.  
+- They will start automatically once the disk is unlocked and boot completes, even if no user logs in to the GUI. [news.ycombinator](https://news.ycombinator.com/item?id=45296353)
+
+There is no supported way for third‑party code to run from the encrypted system volume **before** that FileVault unlock step."			

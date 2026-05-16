@@ -1,0 +1,168 @@
+														
+														
+DASHBOARD	ADMIN													
+														
+														
+SETUP	ADMIN													
+											Count late starts against the user - even for scheduled?			
+	Organization ▼										Late start vs auto start (authenticated vs unauthenticated) vs check-in			
+	Organization												Autostart Unauthenticated Sessions	Yes/No
+	Locations													
+	Schedules										If started after scheduled time, do we charge them for the time?		Charge for Late Time (how to charge missed session time?)	
+	…...										If started after scheduled time, do give them the full time?		Enforce Scheduled End Time	
+	User Config ▼												Scheduled session early start interval?	
+	User Groups												Keep Scheduled End (give free time)?	
+	User Classes													
+	…...													
+	…...													
+	Backend ▼													
+	Integrations													
+	Workflows													
+	Email													
+	Environments													
+	…...													
+	…...													
+	Other Grouping of Pre-existing Sub-sections ▼													
+	Etc… with other "core" setup 													
+USERS & ACCOUNTS	ADMIN	User Management						Quick Search Box*… Adv Search Icon* | Refresh ... Help | Acct.Info/Logout … Dropdown Actions List						
+		Types	Accounts	Groups	Tiers	Account Types	Account Generation	Actions List						
+	Users ▼	RegEx	Search	Add		Add		Create Passes						
+	User Types	Guest Accounts	Add	Remove		Modify		Bulk Actions*						
+	User Accounts	Instant Accounts	Merge	View Members		Remove		*Archive						
+	User Groups	Visitor Accounts	More…*			View Members		*Anonymize				https://dribbble.com/shots/3531650-Table		
+	User Tiers		*Advanced Search					*Mass Update				https://dribbble.com/shots/25856247-High-density-DataGrid-Table-for-saas-web-app-dashboard		
+	Acount Types		*Ban / Disable					*User Import				https://dribbble.com/shots/15840314-Data-Grid		
+	Account Generation		*Remove					*Usage Export				https://dribbble.com/shots/5709089-Data-Grid-Filter-UI		
+			Create Reservation*											
+			*Standby Reservation								Column order + show/hide	https://dribbble.com/shots/3531650-Table		
+			*Group Reservation											
+			*Scheduled Reservation											
+			View User Activity*											
+	Collapsible side navbar		*Current Activity											
+	(show icons only)		*Last 30 Days											
+	flyout on engagement		*Full History											
+			Message?											
+			Create Passes					Push Configuration						
+	Show List of Servers  for this portal	Grid Headers/Column Names (with sort by and edit columns option)												
+	Dropdown to select/change	Filter w/apply button (or hit enter) after entry is complete in all desired fields + Reset/Clear filter												
+	Display server processing all requests	Data grid output as per filters, sort by, and columns (default + additional if searched on or data matched)												
+		*All search options that have filters set on or find results in fields other than the default should auto-show those columns until cleared.												
+LOCATIONS	ADMIN													
+		Locations	Areas	Sub-Groups	Kiosks	Schedules	Pre-Flight							
+	Locations	Details	Details	Details	Details	Details	Details							
+	Areas	Add	Add	Add	Add	Create	Create							
+	Sub-Groups	Message?	Message?	Message?	Modify	Modify	Modify							
+	Kiosks	Configure	Configure	Configure	Remove	Remove	Remove							
+	Schedules	Remove	Remove	Remove	Decommission		Execute							
+	Free Time	Decommission	Decommission	Decommission	Recommission		Schedule?							
+	Pre-Flight	Recommission	Recommission	Recommission										
+	Pools													
+		Override Report			SCHEMA									
+	Show List of Servers  for this portal	Grid Headers/Column Names (with sort by and edit columns option)												
+	Dropdown to select/change	Filter w/apply button (or hit enter) after entry is complete in all desired fields + Reset/Clear filter												
+	Display server processing all requests	Data grid output as per filters, sort by, and columns (default + additional if searched on or data matched)												
+		*All search options that have filters set on or find results in fields other than the default should auto-show those columns until cleared.												
+RESERVATIONS	ADMIN													
+		Block	Scheduled	Assisted	Standby?	Active	Maintenance	Extended Reservation?						
+	Block Reservations	Search: Quick/AI	View (All)	Create?	Modify?	Sort	Run Report							
+	Scheduled Reservations	Search: Quick/AI	View	Create	Modify	Remove								
+	Assisted Reservations	Modify (Add/Release)						Message?						
+	Standby Reservations							Extend Reservation?						
+														
+														
+	Extended Reservation?	Limit number of extensions?												
+		Remove comment reference to min and max at resource type level												
+														
+								Push Configuration						
+		Grid Headers/Column Names (with sort by and edit columns option)												
+		Filter w/apply button (or hit enter) after entry is complete in all desired fields + Reset/Clear filter												
+		Data grid output as per filters, sort by, and columns (default + additional if searched on or data matched)												
+		*All search options that have filters set on or find results in fields other than the default should auto-show those columns until cleared.												
+RESOURCES	ADMIN	Resources (355)	Types (6)	Collections (5)	Compound Resource (4)	Compound Types (1)								
+		Display/View History	Add	Add				Filter						
+	Resources (355)	Add	Modify	Modify		Search: Quick/AI		Sort						
+	Resource Types (6)	Replicate	Remove	Remove		Search:Advanced		Collapse All						
+	Resource Collections	Disable	Compare?					Expand All						
+	Compound Resources (4)	Reenable						Group By						
+	Compound Types (1)	Link												
+		Message?												
+		Right Bar Actions												
+		Deploy: License												
+		Deploy: Relicense												
+		Replace: Rename												
+		Replace: Merge												
+		Remove: Delist												
+		Remove: Anonymize												
+		Remove: Destroy (!)												
+		Return?						Push Configuration						
+		Grid Headers/Column Names (with sort by and edit columns option)												
+		Filter w/apply button (or hit enter) after entry is complete in all desired fields + Reset/Clear filter												
+		Data grid output as per filters, sort by, and columns (default + additional if searched on or data matched)												
+		*All search options that have filters set on or find results in fields other than the default should auto-show those columns until cleared.												
+CONSTRUCTS	ADMIN													
+														
+	Zones													
+	Segments													
+	Workflows													
+														
+	Access Portals	Single portal allowed per location												
+		Grid Headers/Column Names (with sort by and edit columns option)												
+		Filter w/apply button (or hit enter) after entry is complete in all desired fields + Reset/Clear filter												
+		Data grid output as per filters, sort by, and columns (default + additional if searched on or data matched)												
+		*All search options that have filters set on or find results in fields other than the default should auto-show those columns until cleared.												
+REPORTS	ADMIN	Reports	Report Schedules											
+		Search: Quick/AI	Search: Quick/AI					???						
+	Reports	View (All)	View					Filter						
+	Report Schedules	Create?	Create											
+		Modify?	Modify											
+		Sort	Remove											
+		Run Report												
+														
+														
+														
+	Transactions	Transactions that are associated with Resource Types or Areas that are exempt from counting toward daily limits will need a flag of some kind to account for them being excluded from a user's daily session limit and/or total minutes allowed.												
+		Track reservation type and duration type (quick vs. full)												
+		Record Free Time minutes used												
+		Block reservations are always charged to Free Time minutes and Free Time caluclations must exclude block reservation transactions												
+														
+														
+														
+	Reports													
+	Locations (one or more)	Organization bound - disable and auto "select" if an area or pool is selected, resource types would still allow filtering by location												
+	Areas (one or more)	Selecting an area automatically disables location filters as the area is bound to a location												
+	Sub-Group													
+	Pools (one or more)	… avoid double counts / disallow multiple pools or disable sums?  (Selecting a pool automatically disables location filters as the area is bound to a location)												
+	Resources (one or more)													
+	Resource Types (one or more)													
+	Audit	Report/audit to see configuration changes in the past X number of hours/days												
+	Resource Collection?													
+	Resource Group (reporting group)													
+														
+														
+														
+														
+		Grid Headers/Column Names (with sort by and edit columns option)												
+		Filter w/apply button (or hit enter) after entry is complete in all desired fields + Reset/Clear filter												
+		Data grid output as per filters, sort by, and columns (default + additional if searched on or data matched)												
+		*All search options that have filters set on or find results in fields other than the default should auto-show those columns until cleared.												
+SYSTEM	ADMIN													
+							Documentation / Help							
+	Organization						Keywords							
+	Integrations			Export contact info?										
+	Security Policies			Force control server side of thaw space or competitor's equivalent (i.e., List of paths to store config files  & report back any errors with config)?										
+	System Preferences	2FA Options?		Log file pre-fixes by location?										
+	Messaging													
+	Languages													
+	Theming													
+	Email Templates			Print confirmation options at reservation stations										
+														
+	Database Configuration													
+	Scripts			Data anonymization options/schedule										
+	Licensing			Wording for unauthenticated reservations (go see staff, or proceed to resource)										
+	Logging													
+	Privacy													
+	Experiences													
+	Servers													
+	Documentation / Help													
+	Networking	Configure ports used, timeouts, etc												
+	Email Config	Support Google Mail, OAUTH, EWS, SMTP, Entra?, etc.												
