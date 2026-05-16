@@ -19,6 +19,7 @@ CREATE OR REPLACE FUNCTION public.fn_workstation_management(
     p_branch_sk INTEGER DEFAULT NULL,
     p_resource_group_id INTEGER DEFAULT NULL,
     p_system_type_sk INTEGER DEFAULT NULL,
+    p_resource_type_id INTEGER DEFAULT NULL,
     p_system_code VARCHAR DEFAULT NULL,
     p_system_name VARCHAR DEFAULT NULL,
     p_is_active BOOLEAN DEFAULT TRUE,
@@ -31,6 +32,7 @@ RETURNS TABLE(
     branch_sk INTEGER,
     resource_group_id INTEGER,
     system_type_sk INTEGER,
+    resource_type_id INTEGER,
     system_code VARCHAR,
     system_name VARCHAR,
     is_active BOOLEAN,
@@ -51,6 +53,7 @@ AS $$
 | `p_branch_sk` | `INTEGER` | Conditional | Branch/location SK |
 | `p_resource_group_id` | `INTEGER` | Conditional | Resource group ID |
 | `p_system_type_sk` | `INTEGER` | Conditional | System type SK |
+| `p_resource_type_id` | `INTEGER` | Conditional | Resource type ID (FK to resource_types) |
 | `p_system_code` | `VARCHAR` | Conditional | Unique system code |
 | `p_system_name` | `VARCHAR` | Conditional | Display name |
 | `p_is_active` | `BOOLEAN` | NO | Active status (default: true) |
@@ -219,7 +222,12 @@ BEGIN
         RETURN QUERY
         UPDATE work_stations ws SET
             branch_sk = COALESCE(p_branch_sk, ws.branch_sk),
-            -- ... other fields
+            resource_group_id = COALESCE(p_resource_group_id, ws.resource_group_id),
+            system_type_sk = COALESCE(p_system_type_sk, ws.system_type_sk),
+            resource_type_id = COALESCE(p_resource_type_id, ws.resource_type_id),
+            system_code = COALESCE(p_system_code, ws.system_code),
+            system_name = COALESCE(p_system_name, ws.system_name),
+            is_active = COALESCE(p_is_active, ws.is_active),
             updated_by = COALESCE(p_updated_by, ws.updated_by),
             updated_at = now()
         WHERE ws.system_id = p_system_id

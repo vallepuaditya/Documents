@@ -410,3 +410,5 @@ SELECT fn_kiosk_create_reservation(
 - **Duration source:** Duration comes from resource_type.default_duration_minutes
 - **Atomic operation:** All insertions happen in single transaction
 - **Future enhancement:** Add waitlist logic when resource unavailable instead of immediate exception
+
+
